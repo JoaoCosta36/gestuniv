@@ -11,14 +11,16 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::get('/', function () {
+ 
+    return view('home');
+});
 Route::get('ajaxRequest', 'AjaxController@ajaxRequest');
 
 Route::post('ajaxRequest', 'AjaxController@ajaxRequestPost');
 
 Route::resource('products','ProductController');
+
 
 Auth::routes();
 

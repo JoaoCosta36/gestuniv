@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laravel 5.7 CRUD Application - ItSolutionStuff.com</title>
+    <title>Scheduniv</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}" >
 </head>
-<body>
-  
+<style>
+body{
+    background-image: url('background.jpg');
+
+	color:white;
+}
+</style>
+<body  >
 <div class="container">
     @yield('content')
 </div>

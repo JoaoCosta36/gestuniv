@@ -14,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
-  
+     
+        $products = Product::first()->paginate(25);
         return view('products.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -39,14 +39,19 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'ano' => 'required',
+            'semestre' => 'required',
             'name' => 'required',
             'detail' => 'required',
+            'email' => 'required',
+            
+           
         ]);
   
         Product::create($request->all());
    
-        return redirect()->route('products.index')
-                        ->with('success','Product created successfully.');
+        return redirect()->route('products.store')
+                        ->with('success','Adicionado com sucesso');
     }
    
     /**
@@ -58,8 +63,9 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('products.show',compact('product'));
+        
     }
-   
+       
     /**
      * Show the form for editing the specified resource.
      *
@@ -81,6 +87,8 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
+            'ano' => 'required',
+            'semestre' => 'required',
             'name' => 'required',
             'detail' => 'required',
         ]);
@@ -88,7 +96,7 @@ class ProductController extends Controller
         $product->update($request->all());
   
         return redirect()->route('products.index')
-                        ->with('success','Product updated successfully');
+                        ->with('success','Atualização feita com sucesso');
     }
   
     /**
@@ -102,6 +110,9 @@ class ProductController extends Controller
         $product->delete();
   
         return redirect()->route('products.index')
-                        ->with('success','Product deleted successfully');
+                        ->with('success','Apagado com sucesso');
     }
+
+
+   
 }

@@ -1,23 +1,28 @@
-@extends('layouts.app')
+ @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+ @section('content') 
+ <?php 
+ $_SESSION["head"] = 1;
+session_start();?>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}" >
+<body>
+<?php if(Auth::user())
+{
+    echo "<div  align='center'>";
+}else
+    echo "<div style='visibility:hidden;' align='center'>";
+    ?>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<form id="ano1" value="1" action="/products" method="GET">
+ <button id="btn_01" type="submit" name="ano" value="1ºAno"  > 1ºAno </button> 
+</form>
+<form value='ano2' action="/products" method="GET">
+<button type="submit" name="ano" value="2ºAno"  > 2ºAno </button> 
+</form>
+<form value='ano3' action="/products?ano=3" method="GET">
+<button type="submit" name="ano" value="3ºAno"  > 3ºAno </button> 
 
-                    You are logged in !
-                </div>
-            </div>
-        </div>
-    </div>
+</form>
 </div>
+</body>
 @endsection

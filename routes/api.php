@@ -15,4 +15,11 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+    
 });
+Route::get('products/{email}', function($id) {
+    return Product::first()->paginate(25);
+});
+
+Route::get('my_first_api','HomeController@my_first_api');
+

@@ -25,4 +25,15 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function my_first_api()
+    {
+        $data = [
+            'name' =>'Joao',
+            'mobile'=>'910626854'
+
+        ];
+        return response()->json($data); 
+    }
+    
+    
 }
